@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QSK78 Bracket Structural Validation — Ali Sabbagh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="../index.html#home">Home</a></li>
+      <li><a class="site-nav__link" href="../index.html#projects">Projects</a></li>
+      <li><a class="site-nav__link" href="../index.html#research">Research</a></li>
+      <li><a class="site-nav__link" href="../index.html#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container page-body">
+
+      <a class="back-link" href="../index.html#projects">Back to projects</a>
+
+      <h1 class="page-title">QSK78 Bracket Structural Validation</h1>
+
+      <div class="skills-label">Skills used</div>
+      <ul class="skills-list">
+        <li>ANSYS Mechanical</li>
+        <li>Modal Analysis</li>
+        <li>Bolted Joint (DBJ) Analysis</li>
+        <li>FEA</li>
+      </ul>
+
+      <p class="disclaimer">This project was completed during an internship. Specific images and data have been withheld or generalized to protect proprietary company information.</p>
+
+      <div class="page-content">
+
+        <h2 class="content-heading">Objective</h2>
+        <p>
+          Validate the structural robustness of a new electronic module
+          bracket through shock, modal, and bolted joint analysis.
+        </p>
+
+        <h2 class="content-heading">Approach</h2>
+        <ul class="content-list">
+          <li>Ran static structural, shock load, and modal analysis</li>
+          <li>Performed modal scaling and bolted joint (DBJ) analysis to assess bolt margins under load</li>
+          <li>Identified a bolted joint at medium risk of failure</li>
+        </ul>
+
+        <h2 class="content-heading">Result</h2>
+        <p>
+          Recommended increasing fastener length by 10mm, improving thread
+          strip margins across all four bolts. Delivered the full analysis
+          on schedule with a clear, actionable design recommendation.
+        </p>
+
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Bolt</th>
+                <th>Before</th>
+                <th>After</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bolt 1</td>
+                <td class="data-table__before">0.48</td>
+                <td class="data-table__after">0.98</td>
+              </tr>
+              <tr>
+                <td>Bolt 2</td>
+                <td class="data-table__before">0.81</td>
+                <td class="data-table__after">1.56</td>
+              </tr>
+              <tr>
+                <td>Bolt 3</td>
+                <td class="data-table__before">0.88</td>
+                <td class="data-table__after">1.63</td>
+              </tr>
+              <tr>
+                <td>Bolt 4</td>
+                <td class="data-table__before">0.81</td>
+                <td class="data-table__after">1.56</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="content-caption">Thread strip margin per bolt, before and after increasing fastener length by 10mm.</p>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Ali Sabbagh</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

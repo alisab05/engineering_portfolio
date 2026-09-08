@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Duty Cycle Data Pipeline Automation — Ali Sabbagh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="../index.html#home">Home</a></li>
+      <li><a class="site-nav__link" href="../index.html#projects">Projects</a></li>
+      <li><a class="site-nav__link" href="../index.html#research">Research</a></li>
+      <li><a class="site-nav__link" href="../index.html#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container page-body">
+
+      <a class="back-link" href="../index.html#projects">Back to projects</a>
+
+      <h1 class="page-title">Duty Cycle Data Pipeline Automation</h1>
+
+      <div class="skills-label">Skills used</div>
+      <ul class="skills-list">
+        <li>Python</li>
+        <li>SQL</li>
+        <li>Algorithm design &amp; optimization</li>
+        <li>Data structures</li>
+        <li>AI-assisted development (Copilot)</li>
+        <li>Databricks/data lake workflows</li>
+      </ul>
+
+      <p class="disclaimer">This project was completed during an internship. Specific images and data have been withheld or generalized to protect proprietary company information.</p>
+
+      <div class="page-content">
+
+        <h2 class="content-heading">Objective</h2>
+        <p>
+          Automate a slow, manual process for retrieving field engine data
+          used in physics-of-failure damage modeling, enabling a reliable
+          data library across hundreds of engines.
+        </p>
+
+        <h2 class="content-heading">Approach</h2>
+        <ul class="content-list">
+          <li>The original process required manually reviewing a calendar heat map to find a usable data window for a single engine, then downloading that window's time-series data, a repeated manual lookup per engine that didn't scale</li>
+          <li>
+            Designed and implemented a two-stage pipeline in Python and SQL to replace this:
+            <ul class="content-list">
+              <li>A data availability script that evaluates all engines at once, applying coverage and minimum-window constraints to automatically select the best high-coverage data window per engine, using data structure and algorithm techniques to efficiently search and filter across the full dataset rather than checking each engine individually</li>
+              <li>A data download script that takes the selected windows as input and retrieves the corresponding time-series data per engine</li>
+            </ul>
+          </li>
+          <li>Used AI-assisted development to speed up iteration on the Python scripts, and worked closely with the analytics team to align on data requirements and integration with the existing damage modeling workflow</li>
+        </ul>
+
+        <div class="stat-highlight">
+          <span class="stat-highlight__before">20 min/ESN</span>
+          <span class="stat-highlight__arrow">&rarr;</span>
+          <span class="stat-highlight__after">3 min/ESN</span>
+        </div>
+
+        <div class="flow">
+          <div class="flow__column">
+            <div class="flow__column-title">Old Process</div>
+            <div class="flow__step">Manually review a calendar heat map to find a usable data window, one engine at a time</div>
+            <div class="flow__arrow">&darr;</div>
+            <div class="flow__step">Manually download that window's time-series data (~20 min/ESN)</div>
+          </div>
+          <div class="flow__column flow__column--new">
+            <div class="flow__column-title">New Process</div>
+            <div class="flow__step">Data availability script selects the best high-coverage window for every engine at once</div>
+            <div class="flow__arrow">&darr;</div>
+            <div class="flow__step">Data download script retrieves the time-series data for each selected window (~3 min/ESN)</div>
+          </div>
+        </div>
+
+        <h2 class="content-heading">Result</h2>
+        <p>
+          Cut data processing time from ~20 minutes to ~3 minutes per
+          engine, an 85% reduction, while scaling the pipeline to a batch
+          of 650 engines in a single run.
+        </p>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Ali Sabbagh</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

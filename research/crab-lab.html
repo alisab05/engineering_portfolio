@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRAB Lab — Ali Sabbagh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="../index.html#home">Home</a></li>
+      <li><a class="site-nav__link" href="../index.html#projects">Projects</a></li>
+      <li><a class="site-nav__link" href="../index.html#research">Research</a></li>
+      <li><a class="site-nav__link" href="../index.html#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container page-body">
+
+      <a class="back-link" href="../index.html#research">Back to research</a>
+
+      <h1 class="page-title page-title--with-subtitle">CRAB Lab</h1>
+      <p class="page-header__subtitle">Compliant leg mechanisms &amp; legged robot locomotion</p>
+
+      <img class="page-hero" src="../images/crab-scuttle-rough-terrain.png" alt="SCUTTLE, a multi-segmented centipede-inspired robot, crossing a field of uneven wooden blocks used to simulate rough terrain">
+
+      <div class="page-content">
+
+        <div class="skills-label">Skills used</div>
+        <ul class="skills-list">
+          <li>Compliant mechanism design</li>
+          <li>TPU &amp; PLA 3D printing</li>
+          <li>CAD modeling</li>
+          <li>Mechanical testing &amp; iteration</li>
+          <li>Robot integration (Raspberry Pi)</li>
+        </ul>
+
+        <p class="disclaimer">I lead the compliant leg redesign below alongside Jianfeng Lin in the CRAB Lab. The steering study was a smaller project with Jai and Jianfeng Lin, and the multi-legged locomotion study is a larger team project led by Jianfeng Lin, in which my role was running experiments.</p>
+
+        <h2 class="content-heading">Compliant Leg Redesign</h2>
+        <p>
+          SCUTTLE, our lab's multi-segmented robot, moves by combining body
+          undulation with rigid, C-shaped leg rotation. That works well on
+          flat ground, but on rough terrain the rigid legs become a
+          bottleneck: a tall obstacle can stall a leg mid-rotation, and a
+          side impact makes it slip instead of clearing the obstacle, so the
+          robot keeps actuating without making forward progress.
+        </p>
+        <figure class="content-figure">
+          <video class="content-video" controls muted preload="metadata">
+            <source src="../images/crab-scuttle-rough-terrain.mp4" type="video/mp4">
+            Your browser does not support playback of this video format.
+          </video>
+          <figcaption class="content-caption">SCUTTLE's current rigid C-legs crossing a rough-terrain block field.</figcaption>
+        </figure>
+
+        <p>
+          I'm leading the redesign of SCUTTLE's leg into a variable-stiffness
+          compliant leg. The bottom 90&deg; stance region keeps four rigid
+          spokes for normal ground contact, while the side regions use thin,
+          curved spokes that buckle elastically when they hit an obstacle,
+          letting the leg deform around it instead of stalling or slipping.
+          I'm building the compliant spokes out of TPU (thermoplastic
+          polyurethane).
+        </p>
+        <div class="image-pair">
+          <figure class="content-figure">
+            <img class="content-image" src="../images/crab-compliant-leg-front.png" alt="Front-view silhouette of the compliant leg design, showing the rigid stance spokes and the curved compliant spokes along the sides">
+            <figcaption class="content-caption">Front view: rigid stance spokes (bottom 90&deg;) and curved compliant spokes along the sides.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image" src="../images/crab-compliant-leg-3d.png" alt="3D isometric render of the compliant leg design">
+            <figcaption class="content-caption">3D render of the compliant leg design.</figcaption>
+          </figure>
+        </div>
+        <p>
+          Next, I'm characterizing how spoke stiffness depends on three
+          geometric parameters &#40;spoke thickness, spiral curvature radius,
+          and spoke width&#41;, and deciding between a single-material TPU
+          print or a multi-material design with rigid PLA stance spokes and
+          TPU compliant spokes.
+        </p>
+
+        <h3 class="content-subheading">First Iteration</h3>
+        <p>
+          My first printed prototype let me test the spoke geometry and flex
+          behavior by hand before putting it on the robot.
+        </p>
+        <div class="image-pair">
+          <figure class="content-figure">
+            <img class="content-image" src="../images/crab-compliant-leg-prototype-hand.jpg" alt="Hand holding the first printed compliant leg prototype">
+            <figcaption class="content-caption">First printed prototype.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <video class="content-video" controls muted preload="metadata">
+              <source src="../images/crab-compliant-leg-flex-test.mp4" type="video/mp4">
+              Your browser does not support playback of this video format.
+            </video>
+            <figcaption class="content-caption">Flex-testing the compliant spokes by hand.</figcaption>
+          </figure>
+        </div>
+
+        <h3 class="content-subheading">Current Progress</h3>
+        <p>
+          I printed six legs for baseline testing, but the lab's SCUTTLE
+          robot wasn't available, so my next step is learning to run it
+          through its Raspberry Pi controller, which will also set me up
+          for testing beyond this project.
+        </p>
+        <div class="image-pair">
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/crab-compliant-leg-six-printed.jpg" alt="Six printed compliant legs laid out on a workbench for baseline testing">
+            <figcaption class="content-caption">Six printed legs, ready for baseline testing.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/crab-scuttle-disassembled-desk.jpg" alt="SCUTTLE's disassembled segments and electronics laid out on a desk">
+            <figcaption class="content-caption">SCUTTLE's segments and electronics, disassembled while unavailable for testing.</figcaption>
+          </figure>
+        </div>
+
+        <h2 class="content-heading">SCUTL Steering Tests</h2>
+        <p>
+          In a separate project with Jai and Jianfeng Lin, I tested how
+          SCUTL, our multi-segmented centipede robot, can steer through
+          posture alone. A steering bias is added to the horizontal body
+          joints, tapered with a cosine window across the front m joints so
+          it fades out gradually along the body instead of ending abruptly.
+          With body undulation turned off, the robot holds a fixed curved
+          shape while its legs drive it forward, so any turning comes purely
+          from that held shape.
+        </p>
+        <p>
+          We swept the bias magnitude &beta; from -30&deg; to +30&deg; in
+          10&deg; steps and the number of biased joints m across 1, 3, and 5,
+          for 21 conditions with 3 trials each, to see how turning depends on
+          both the size of the bias and how far back along the body it
+          reaches.
+        </p>
+        <p>
+          The widest condition in the sweep, &beta; = 30&deg; applied to all
+          five joints with a cosine taper (30, 27.1, 19.6, 10.4, 2.9&deg;
+          head to tail), curves the whole body rather than just the front,
+          and turns like a fixed steering angle since there's no body wave
+          to modulate it.
+        </p>
+        <figure class="content-figure">
+          <video class="content-video" controls muted preload="metadata">
+            <source src="../images/crab-scutl-steering-demo.mp4" type="video/mp4">
+            Your browser does not support playback of this video format.
+          </video>
+          <figcaption class="content-caption">SCUTL turning under the &beta;=30&deg;, m=5 postural steering bias.</figcaption>
+        </figure>
+        <div class="image-pair">
+          <figure class="content-figure">
+            <img class="content-image" src="../images/crab-scutl-steering-trial1.png" alt="Trajectory plot for the beta=30, m=5 trial, turn rate -39.0 degrees per cycle">
+            <figcaption class="content-caption">Trial trajectory for &beta;=30&deg;, m=5 (turn rate -39.0&deg;/cycle).</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image" src="../images/crab-scutl-steering-trial2.png" alt="Trajectory plot for a repeat beta=30, m=5 trial, turn rate -26.4 degrees per cycle">
+            <figcaption class="content-caption">A repeat trial under the same condition (turn rate -26.4&deg;/cycle).</figcaption>
+          </figure>
+        </div>
+        <p>
+          Averaging the start and end position of each condition across all
+          62 trials shows both parameters matter: larger bias magnitudes
+          turn faster, and spreading the bias across more joints (larger m)
+          increases the turn rate at a given &beta;, confirming that both
+          the size and reach of the postural bias shape how tightly SCUTL
+          turns.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/crab-scutl-steering-endpoints.png" alt="Scatter plot of cycle-averaged start and end positions across 21 conditions and 62 trials, marker shape encoding m and color encoding the bias beta">
+          <figcaption class="content-caption">Cycle-averaged start and end positions across all 21 conditions and 62 trials; marker shape encodes m, color encodes the bias &beta;.</figcaption>
+        </figure>
+
+        <h2 class="content-heading">Centipede-Inspired Multi-Legged Locomotion</h2>
+        <p>
+          I'm also part of a larger robophysics study, led by Jianfeng Lin
+          and presented at APS 2026, on how an elongated, multi-segmented
+          robot modeled after centipedes coordinates its body waves and leg
+          stepping to move efficiently. My role has been running
+          experiments: testing different vertical and horizontal body-wave
+          phase lags against the leg gait to see how they affect locomotion
+          performance, work that fed into the group's effective-contact
+          model and geometric-mechanics analysis of the robot's gait.
+        </p>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Ali Sabbagh</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

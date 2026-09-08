@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MIST Lab — Ali Sabbagh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="../index.html#home">Home</a></li>
+      <li><a class="site-nav__link" href="../index.html#projects">Projects</a></li>
+      <li><a class="site-nav__link" href="../index.html#research">Research</a></li>
+      <li><a class="site-nav__link" href="../index.html#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container page-body">
+
+      <a class="back-link" href="../index.html#research">Back to research</a>
+
+      <h1 class="page-title page-title--with-subtitle">MIST Lab &ndash; Laser-Assisted Microcatheter</h1>
+      <p class="page-header__subtitle">Micromachined Sensors &amp; Transducers Lab</p>
+      <p class="page-header__award">Awarded a Georgia Tech <a href="https://experiential.learning.gatech.edu/urop/pura-salary/" target="_blank" rel="noopener">President's Undergraduate Research Award (PURA)</a></p>
+
+      <img class="page-hero" src="../images/catheter1.svg" alt="Diagram of the laser-powered microcatheter tip navigating to the heart, with a labeled cutaway showing the heat shrink tube, temperature probe, force sensor, and heating tip">
+
+      <div class="page-content">
+
+        <div class="skills-label">Skills used</div>
+        <ul class="skills-list">
+          <li>COMSOL Multiphysics FEA</li>
+          <li>MATLAB optical modeling</li>
+          <li>Femtosecond laser micromachining</li>
+          <li>Fiber optic assembly &amp; alignment</li>
+          <li>UV &amp; thermal epoxy bonding</li>
+          <li>Precision fabrication &amp; metrology</li>
+        </ul>
+
+        <p class="disclaimer">This project was completed at the MIST Lab as part of a PURA-funded independent study, carried out alongside labmates and a faculty mentor; the design iterations and fabrication shown here are my individual contributions within that larger effort.</p>
+
+        <p>
+          At the MIST Lab, I developed a laser-powered microcatheter for
+          cardiac ablation and perforation in neonates and young pediatric
+          patients. Congenital heart disease and arrhythmias in this
+          population often require early intervention, but commercial
+          ablation catheters are too large (&gt;4F) and not MRI-compatible,
+          making it difficult to safely target the small, delicate
+          cardiovascular structures of infants and young children.
+        </p>
+        <p>
+          Our design replaced RF ablation with direct laser heating: a fiber
+          optic cable delivered laser power to a heating tip that converted
+          light into heat, while a fiber Bragg grating (FBG) sensor measured
+          contact force and a luminescence-based fiber optic sensor measured
+          temperature. Because every component was fiber optic and
+          dielectric, the catheter was fully MRI-safe and fit in a
+          2&ndash;3F form factor, well below the size of existing ablation
+          catheters.
+        </p>
+
+        <h2 class="content-heading">Simulation &amp; Design</h2>
+        <p>
+          To design the heating tip, I built a MATLAB model of the optical
+          absorption and a COMSOL finite element model of the heat transfer
+          and mechanical strain on the fiber optics. I ran parametric sweeps
+          on the fiber arrangement and on the FBG sensor's diameter and
+          position to find a geometry that gave a predictable, linear
+          strain response for accurate force sensing.
+        </p>
+        <div class="image-pair">
+          <figure class="content-figure">
+            <img class="content-image" src="../images/catheter2.svg" alt="COMSOL finite element mesh of the copper heating tip with an inserted fiber optic">
+            <figcaption class="content-caption">FEA mesh of the copper heating tip and inserted fiber optics.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image" src="../images/catheter4.svg" alt="Von Mises stress distribution across the catheter tip and fiber assembly under an applied load">
+            <figcaption class="content-caption">Von Mises stress across the tip and fiber assembly under an applied contact load.</figcaption>
+          </figure>
+        </div>
+        <p>
+          Repositioning the fiber optics from a linear to a triangular
+          arrangement reduced stress concentration at the center fiber, and
+          of the three tip geometries I tested, the design with a rigid
+          connector isolated to the FBG fiber produced the smallest strain
+          variability and the most linear force response, making it the
+          strongest candidate for a working prototype.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/catheter3.svg" alt="Von Mises stress cross-section around the FBG fiber optic used to compare sensor placement and diameter">
+          <figcaption class="content-caption">Von Mises stress cross-section used to compare FBG sensor placement and diameter across design iterations.</figcaption>
+        </figure>
+
+        <h2 class="content-heading">Fabrication</h2>
+        <p>
+          Building the heating tip proved harder than the simulations. My
+          first approach laser-cut a flat copper plate on the lab's Optec
+          femtosecond system, but the cuts came out with an unintended
+          conical profile that the machine's optics couldn't avoid. I
+          switched to short copper wire segments instead, holding them in a
+          drilled metal rod so I could sand each one flat and consistent by
+          hand before machining.
+        </p>
+        <div class="diagram-grid">
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/mist-fiber-insertion-zoomout.jpg" alt="Fixture and femtosecond laser micromachining setup used to hold and cut the copper tip segments">
+            <figcaption class="content-caption">Fixture and micromachining setup for holding and cutting the copper tip segments.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/mist-holes-cut.jpg" alt="Microscope view of two holes cut into a sanded copper tip with the femtosecond laser">
+            <figcaption class="content-caption">Two holes cut into a sanded copper tip, sized for the power and temperature-sensing fibers.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/mist-fiber-insertion-zoomin.jpg" alt="Fiber optic being inserted into one of the machined holes in the copper tip">
+            <figcaption class="content-caption">Inserting a fiber optic into one of the machined holes.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/mist-wire-prototype.jpg" alt="Copper wire-segment tip prototype with a fiber optic secured and protruding from the bore">
+            <figcaption class="content-caption">Copper wire-segment tip with a fiber optic secured in the bore.</figcaption>
+          </figure>
+        </div>
+        <figure class="content-figure">
+          <video class="content-video content-video--portrait" controls muted preload="metadata">
+            <source src="../images/mist-micromachining.mp4" type="video/mp4">
+            Your browser does not support playback of this video format.
+          </video>
+          <figcaption class="content-caption">The Optec femtosecond laser micromachining the copper tip.</figcaption>
+        </figure>
+        <p>
+          Once the fibers were seated, I secured them with epoxy and
+          packaged the tip in heat shrink tubing to keep the whole assembly
+          at a stable ~3F lumen size.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/mist-early-prototype-heatshrink.jpg" alt="Early catheter tip prototype: copper tip with epoxied fiber optics packaged under heat shrink tubing">
+          <figcaption class="content-caption">Early catheter tip prototype: copper tip with epoxied fiber optics packaged under heat shrink tubing.</figcaption>
+        </figure>
+
+        <h2 class="content-heading">Testing</h2>
+        <p>
+          To confirm the tip actually worked, I ran preliminary laser
+          heating tests with the assembled prototype submerged in water. The
+          tip reached temperature reliably under laser power and the
+          temperature sensor tracked it accurately, confirming the copper
+          tip's functional viability as a laser-to-heat converter.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/mist-water-test.jpg" alt="Laser heating test with the catheter tip submerged in water, fiber optic glowing as it delivers laser power">
+          <figcaption class="content-caption">Laser heating test: the fiber optic delivers laser power to the submerged catheter tip while the temperature sensor reads back the response.</figcaption>
+        </figure>
+
+        <h2 class="content-heading">Outcomes</h2>
+        <p>
+          By the end of the PURA award period, the final tip design produced
+          a consistent, linear strain response suited for accurate
+          contact-force sensing, and the fabricated copper tip was validated
+          by laser heating tests that showed reliable thermal activation and
+          temperature readings, confirming it as a functional laser-to-heat
+          converter for the microcatheter.
+        </p>
+        <p>
+          The project also gave me a lot more independence and
+          responsibility: I was the only person in the lab trained on the
+          Optec laser micromachining system, so I had to troubleshoot
+          machine issues on my own and engineer my own fixture for handling
+          and sanding the small copper segments. Balancing that independence
+          with my mentor agreement (regular updates, simulation work, and
+          lab meetings) deepened my understanding of research as an
+          iterative, creative process.
+        </p>
+
+        <h2 class="content-heading">Poster</h2>
+        <p>
+          This project was also presented as a research poster, co-authored
+          with my MIST Lab collaborators, summarizing the motivation,
+          design, and preliminary results of the laser-powered ablation
+          microcatheter.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/mist-poster.jpg" alt="Research poster titled Laser Powered Ablation Microcatheters, covering motivation, ablation microcatheter design, simulation, and fabrication">
+          <figcaption class="content-caption">Research poster summarizing the project, co-authored with MIST Lab collaborators.</figcaption>
+        </figure>
+
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Ali Sabbagh</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ali Sabbagh — Portfolio</title>
+
+  <!-- Open Sans, used for both headings and body copy (weight does the hierarchy work) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============================= NAVIGATION ============================= -->
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="#home">Home</a></li>
+      <li><a class="site-nav__link" href="#projects">Projects</a></li>
+      <li><a class="site-nav__link" href="#research">Research</a></li>
+      <li><a class="site-nav__link" href="#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- ============================= BANNER ============================= -->
+    <!-- Swap the <img src> for a real photo of you working. Keep the same
+         file name or update this path. Name / tagline are overlaid on the
+         photo, with a dark gradient scrim behind them for contrast. -->
+    <section id="home" class="banner">
+      <img class="banner__image" src="images/IMG_5775 (1).jpeg" alt="Photo of Ali Sabbagh working">
+      <div class="banner__caption">
+        <h1 class="banner__name">Ali Sabbagh</h1>
+        <p class="banner__tagline">Mechanical Engineering and Robotics at Georgia Tech</p>
+      </div>
+    </section>
+
+    <!-- ============================= ABOUT ============================= -->
+    <!-- Replace the headshot image and bio paragraphs with real content. -->
+    <section class="section container about">
+      <img class="about__photo" src="images/IMG_5562 (1).jpeg" alt="Headshot of Ali">
+      <div class="about__bio">
+        <p>
+          Hi, I'm Ali. I design, analyze, and test systems that connect physical theory with functional hardware.
+        </p>
+        <p>
+          As a BS/MS Mechanical Engineering and Robotics student at Georgia
+          Tech, I apply this approach across industry and research.
+        </p>
+        <p>
+          At <span class="accent-name">Cummins</span>, I used structural and
+          modal FEA to predict mechanical behavior prior to manufacturing.
+        </p>
+        <p>
+          At the <span class="accent-name">MIST Lab</span>, I simulated and
+          fabricated MRI-compatible microcatheters.
+        </p>
+        <p>
+          At <span class="accent-name">Toyota Material Handling</span>, I
+          built an automated electro-hydraulic test rig integrating
+          mechanics, circuitry, and software.
+        </p>
+        <p>
+          Currently in the <span class="accent-name">CRAB Lab</span>, I
+          design compliant leg mechanisms to analyze robotic locomotion
+          across complex terrain.
+        </p>
+      </div>
+    </section>
+
+    <!-- ============================= PROJECTS ============================= -->
+    <!-- Each thumbnail links to its own page in /projects. Duplicate a
+         <a class="thumb"> block to add more projects. -->
+    <section id="projects" class="section container">
+      <div class="section-layout">
+        <h2 class="section-heading">Projects</h2>
+        <div class="section-layout__content">
+          <div class="thumb-grid thumb-grid--projects">
+
+            <a class="thumb" href="projects/project-1.html">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--fill" src="images/IMG_6176.JPG" alt="Automated Hydraulic Load Test Rig thumbnail">
+                <div class="thumb__logo thumb__logo--white-bg"><img src="images/Toyota_Material_Handling_Logo.jpg" alt="Toyota Material Handling logo"></div>
+              </div>
+              <div class="thumb__title">Automated Hydraulic Load Test Rig</div>
+              <div class="thumb__subtitle">Toyota Material Handling</div>
+            </a>
+
+            <a class="thumb" href="projects/project-2.html">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--fill" src="images/maxStressWatlow.svg" alt="QSK78 Bracket Structural Validation thumbnail">
+                <div class="thumb__logo"><img src="images/Cummins-Logo.png" alt="Cummins logo"></div>
+              </div>
+              <div class="thumb__title">QSK78 Bracket Structural Validation</div>
+              <div class="thumb__subtitle">Cummins</div>
+            </a>
+
+            <a class="thumb" href="projects/project-3.html">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--inset" src="images/pipeline.svg" alt="Duty Cycle Data Pipeline Automation thumbnail">
+                <div class="thumb__logo"><img src="images/Cummins-Logo.png" alt="Cummins logo"></div>
+              </div>
+              <div class="thumb__title">Duty Cycle Data Pipeline Automation</div>
+              <div class="thumb__subtitle">Cummins</div>
+            </a>
+
+            <a class="thumb" href="projects/project-4.html">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--fill" src="images/maxStress.svg" alt="Handhold Cover Structural &amp; Weld Validation thumbnail">
+                <div class="thumb__logo"><img src="images/Cummins-Logo.png" alt="Cummins logo"></div>
+              </div>
+              <div class="thumb__title">Handhold Cover Structural &amp; Weld Validation</div>
+              <div class="thumb__subtitle">Cummins</div>
+            </a>
+
+            <a class="thumb" href="projects/project-5.html">
+              <img class="thumb__image" src="images/dynoCad.svg" alt="Dynamometer Engine Mount thumbnail">
+              <div class="thumb__title">Dynamometer Engine Mount</div>
+              <div class="thumb__subtitle">eCVT dynamometer test rig</div>
+            </a>
+
+            <a class="thumb" href="projects/project-6.html">
+              <img class="thumb__image" src="images/labeledCad.svg" alt="The Emotional Wrecks Robot thumbnail">
+              <div class="thumb__title">The Emotional Wrecks Robot</div>
+              <div class="thumb__subtitle">ME 2110, Georgia Tech</div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= RESEARCH ============================= -->
+    <!-- Exactly two thumbnails, one per lab. -->
+    <section id="research" class="section container">
+      <div class="section-layout">
+        <h2 class="section-heading">Research</h2>
+        <div class="section-layout__content">
+          <div class="thumb-grid thumb-grid--research">
+
+            <a class="thumb" href="research/crab-lab.html">
+              <img class="thumb__image" src="images/IMG_5165.JPG" alt="CRAB Lab thumbnail">
+              <div class="thumb__title">CRAB Lab</div>
+              <div class="thumb__subtitle">Compliant leg mechanisms &amp; legged robot locomotion</div>
+            </a>
+
+            <a class="thumb" href="research/mist-lab.html">
+              <img class="thumb__image thumb__image--fill" src="images/IMG_3416.JPG" alt="MIST Lab thumbnail">
+              <div class="thumb__title">MIST Lab</div>
+              <div class="thumb__subtitle">Micromachined Sensors &amp; Transducers Lab</div>
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= EXPERIENCE ============================= -->
+    <!-- Duplicate an .experience-item block per internship/job. -->
+    <section id="experience" class="section container">
+      <div class="section-layout">
+        <h2 class="section-heading">Experience</h2>
+        <div class="section-layout__content">
+          <div class="experience-list">
+
+            <div class="experience-item">
+              <div class="experience-item__main">
+                <div class="experience-item__role">Test and Reliability Engineering Internship</div>
+                <div class="experience-item__org">Toyota Material Handling North America</div>
+                <p class="experience-item__description">
+                  Designed and built an automated electro-hydraulic test rig
+                  that simulates forklift hydraulic back-pressure and system
+                  heating within 3% accuracy. Drove the system with custom
+                  KiCad circuits and Arduino PWM control, then used nCode
+                  and MATLAB analysis to iteratively optimize heat
+                  dissipation.
+                </p>
+              </div>
+              <div class="experience-item__dates">May 2026 &ndash; Aug 2026</div>
+            </div>
+
+            <div class="experience-item">
+              <div class="experience-item__main">
+                <div class="experience-item__role">Analysis Led Design and Validation Co-op</div>
+                <div class="experience-item__org">Cummins Inc.</div>
+                <p class="experience-item__description">
+                  Executed structural, modal, weld, and bolt joint analyses
+                  on Watlow Controller and ECM brackets, ensuring
+                  resonance-free 10g compliance. Automated batch data
+                  processing for 500+ engines with Python, cutting
+                  acquisition time by 83%, and assessed a manifold redesign
+                  for the QSK60 platform.
+                </p>
+              </div>
+              <div class="experience-item__dates">Aug 2025 &ndash; Dec 2025</div>
+            </div>
+
+            <div class="experience-item">
+              <div class="experience-item__main">
+                <div class="experience-item__role">Technical Research and Development</div>
+                <div class="experience-item__org">Georgia Tech Off Road (Baja SAE)</div>
+                <p class="experience-item__description">
+                  Designed a custom engine mounting plate and overhauled a
+                  dynamometer testing fixture to evaluate power, torque, and
+                  efficiency, supporting eCVT sensor integration that
+                  lowered rotational inertia by 60%.
+                </p>
+              </div>
+              <div class="experience-item__dates">Jan 2024 &ndash; Aug 2025</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Ali Sabbagh</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

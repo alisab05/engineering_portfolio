@@ -1,0 +1,958 @@
+/* =========================================================
+   Design tokens
+   Swap these values to re-skin the whole site from one place.
+   ========================================================= */
+:root {
+  --color-bg: #F7F6F3;
+  --color-text: #111111;
+  --color-accent: #1166C0;
+  --color-border: #DDDDDD;
+  --color-muted: #555555;
+
+  --font-base: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  --content-max-width: 1000px;
+
+  /* =======================================================
+     Spacing grid — every margin, padding, and gap in this file
+     resolves to one of these. Nothing outside this scale. */
+  --space-1: 8px;
+  --space-2: 16px;
+  --space-3: 24px;
+  --space-4: 32px;
+  --space-5: 40px;
+  --space-6: 48px;
+  --space-7: 56px;
+  --space-8: 64px;
+  --space-9: 72px;
+  --space-10: 80px;
+  --space-12: 96px;
+
+  --content-padding: var(--space-3);
+  --nav-height: var(--space-8);
+
+  /* Semantic spacing — named by role, each pinned to a grid step:
+     - space-block:    between content blocks within a section (paragraphs, images, thumbnails)
+     - space-title:    between a section/page title and the content below it
+     - space-subtitle: between a sub-heading and the content it introduces
+     - space-section:  padding between major homepage sections (Hero/About/Projects/Research/Experience) */
+  --space-block: var(--space-3);
+  --space-title: var(--space-4);
+  --space-subtitle: var(--space-2);
+  --space-section: var(--space-12);
+  --space-section-mobile: var(--space-7);
+
+  /* =======================================================
+     Typography scale — size / weight / line-height per level.
+     Line heights run generous (1.5+) for readability in dense
+     technical descriptions. */
+  --text-display-size: 2.5rem;   /* hero name */
+  --text-display-weight: 700;
+  --text-display-line: 1.15;
+
+  --text-h1-size: 2rem;          /* page-level title */
+  --text-h1-weight: 700;
+  --text-h1-line: 1.2;
+
+  --text-h2-size: 1.75rem;       /* homepage section titles */
+  --text-h2-weight: 700;
+  --text-h2-line: 1.25;
+
+  --text-h3-size: 1.3rem;        /* in-page sub-section heading, e.g. "Future Work" */
+  --text-h3-weight: 700;
+  --text-h3-line: 1.3;
+
+  --text-subheader-size: 1.05rem; /* e.g. "First Iteration", experience role */
+  --text-subheader-weight: 700;
+  --text-subheader-line: 1.4;
+
+  --text-body-size: 1rem;
+  --text-body-weight: 400;
+  --text-body-line: 1.7;
+
+  --text-small-size: 0.9rem;      /* nav links, thumbnail subtitles, dates */
+  --text-small-weight: 400;
+  --text-small-line: 1.5;
+
+  --text-caption-size: 0.85rem;   /* image captions, footer */
+  --text-caption-weight: 400;
+  --text-caption-line: 1.5;
+
+  --text-tag-size: 0.8rem;        /* skill tags */
+  --text-tag-weight: 500;
+  --text-tag-line: 1.4;
+}
+
+/* =========================================================
+   Reset
+   ========================================================= */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Offset anchor scrolling so section tops aren't hidden under the fixed nav */
+  scroll-padding-top: var(--nav-height);
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-base);
+  font-size: var(--text-body-size);
+  font-weight: var(--text-body-weight);
+  line-height: var(--text-body-line);
+  -webkit-font-smoothing: antialiased;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+/* Respect reduced-motion preferences for every animation/transition on the site */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+/* =========================================================
+   Layout helpers
+   ========================================================= */
+.container {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: 0 var(--content-padding);
+}
+
+.section {
+  padding: var(--space-section) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+/* Left-aligned section title, full width, with content stacked below it
+   (Projects / Research / Experience) */
+.section-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-title);
+}
+
+.section-heading {
+  font-size: var(--text-h2-size);
+  font-weight: var(--text-h2-weight);
+  line-height: var(--text-h2-line);
+  text-align: left;
+  margin: 0;
+}
+
+.section-layout__content {
+  width: 100%;
+}
+
+/* =========================================================
+   Top navigation
+   Fixed + centered, hairline bottom border instead of a shadow.
+   ========================================================= */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  min-height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
+  padding: 0 var(--content-padding);
+  z-index: 100;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 40px;
+}
+
+.site-nav__link {
+  display: inline-block;
+  font-size: var(--text-small-size);
+  font-weight: 500;
+  line-height: var(--text-small-line);
+  color: var(--color-text);
+  padding: var(--space-1) 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.35s ease, color 0.35s ease;
+}
+
+.site-nav__link:hover,
+.site-nav__link.is-active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+/* Push page content below the fixed nav */
+main {
+  padding-top: var(--nav-height);
+}
+
+/* =========================================================
+   Banner
+   Full-width photo; name / tagline sit below it in normal flow.
+   ========================================================= */
+.banner {
+  position: relative;
+  width: 100%;
+  height: 60vh;
+  min-height: 340px;
+  overflow: hidden;
+}
+
+.banner__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* 0% = show the top of the photo, 100% = show the bottom. Nudge this
+     value up or down until the crop looks right. */
+  object-position: center 100%;
+  opacity: 1;
+  animation: fade-in-up 900ms ease-out both;
+}
+
+/* Overlaid on the photo, bottom-anchored, with a dark scrim behind it so
+   the white text stays readable against any part of the image. */
+.banner__caption {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--space-4) var(--content-padding) var(--space-5);
+  background: linear-gradient(to top, rgba(17, 17, 17, 0.65), rgba(17, 17, 17, 0));
+  text-align: center;
+  animation: fade-in-up 900ms ease-out 150ms both;
+}
+
+.banner__name {
+  font-size: var(--text-display-size);
+  font-weight: var(--text-display-weight);
+  line-height: var(--text-display-line);
+  color: #FFFFFF;
+  margin-bottom: var(--space-1);
+}
+
+.banner__tagline {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: var(--text-small-line);
+  color: #FFFFFF;
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* =========================================================
+   About
+   Headshot beside bio text; stacks on narrow screens.
+   ========================================================= */
+.about {
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.about__photo {
+  flex: 0 0 380px;
+  width: 380px;
+  height: 460px;
+  object-fit: cover;
+}
+
+.about__bio {
+  flex: 1;
+  min-width: 0;
+}
+
+.about__bio p + p {
+  margin-top: var(--space-block);
+}
+
+/* Company / lab names called out in the bio */
+.accent-name {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* =========================================================
+   Grids (Projects / Research)
+   Plain thumbnails, no card chrome.
+   ========================================================= */
+.thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--space-block);
+}
+
+/* Projects: fixed 2 columns so 6 thumbnails form a 2x3 grid */
+.thumb-grid--projects {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* Research: exactly 2 thumbnails, stretched to fill the content column */
+.thumb-grid--research {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.thumb {
+  display: block;
+  min-width: 0;
+}
+
+.thumb__image {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-accent);
+  margin-bottom: var(--space-1);
+  transition: opacity 0.35s ease;
+}
+
+/* One-off: insets the image slightly so it doesn't touch the border on all
+   sides when its aspect ratio is close to the thumbnail box's own 4:3. */
+.thumb__image--inset {
+  padding: var(--space-2);
+}
+
+/* Positions a small company/lab logo badge over the bottom-left corner
+   of a thumbnail image */
+.thumb__image-wrap {
+  position: relative;
+}
+
+.thumb__logo {
+  position: absolute;
+  left: var(--space-1);
+  bottom: var(--space-1);
+  display: flex;
+  align-items: center;
+  padding: var(--space-1);
+}
+
+/* One-off: a white backing for a logo that isn't already transparent */
+.thumb__logo--white-bg {
+  background-color: #FFFFFF;
+}
+
+.thumb__logo img {
+  display: block;
+  height: 20px;
+  width: auto;
+}
+
+.thumb:hover .thumb__image {
+  opacity: 0.85;
+}
+
+/* Fills the thumbnail box edge-to-edge instead of showing the whole image
+   uncropped — used where the source image should fill the frame. */
+.thumb__image--fill {
+  object-fit: cover;
+}
+
+.thumb__title {
+  font-size: var(--text-body-size);
+  font-weight: 700;
+  line-height: var(--text-subheader-line);
+}
+
+.thumb__subtitle {
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  color: var(--color-muted);
+  margin-top: 0;
+}
+
+/* =========================================================
+   Experience
+   Simple list of entries separated by hairlines.
+   ========================================================= */
+.experience-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.experience-item {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-3);
+  padding: var(--space-3) 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.experience-list .experience-item:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.experience-item__main {
+  flex: 1;
+}
+
+.experience-item__role {
+  font-size: var(--text-subheader-size);
+  font-weight: var(--text-subheader-weight);
+  line-height: var(--text-subheader-line);
+}
+
+.experience-item__org {
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-top: 0;
+}
+
+.experience-item__description {
+  margin-top: var(--space-1);
+  color: var(--color-muted);
+}
+
+.experience-item__dates {
+  flex: 0 0 auto;
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  color: var(--color-muted);
+  white-space: nowrap;
+  padding-top: 0;
+}
+
+/* =========================================================
+   Simple sub-page layout (project / research detail pages)
+   ========================================================= */
+.page-header__subtitle {
+  margin-top: var(--space-1);
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  color: var(--color-muted);
+}
+
+/* An award/credential tied to a page (e.g. a research grant), styled as
+   plain accent-colored text directly under the subtitle. */
+.page-header__award {
+  margin-top: var(--space-1);
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.page-header__award a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--space-3);
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  font-weight: 500;
+  color: var(--color-accent);
+  border-bottom: 1px solid var(--color-accent);
+}
+
+.page-body {
+  padding-top: var(--space-7);
+  padding-bottom: var(--space-10);
+}
+
+.page-body p + p {
+  margin-top: var(--space-block);
+}
+
+.page-hero {
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  object-fit: cover;
+  margin-bottom: var(--space-block);
+}
+
+/* Title sits below the hero image, left-aligned */
+.page-title {
+  font-size: var(--text-h1-size);
+  font-weight: var(--text-h1-weight);
+  line-height: var(--text-h1-line);
+  text-align: left;
+  margin-bottom: var(--space-title);
+}
+
+/* When a subtitle directly follows the title (research pages), the two
+   read as one heading block, so they sit close together instead of using
+   the larger gap meant to separate the title from the page's content. */
+.page-title--with-subtitle {
+  margin-bottom: var(--space-1);
+}
+
+/* Spans the full centered container, matching the rest of the page */
+.page-content {
+  width: 100%;
+}
+
+.skills-label {
+  margin-top: var(--space-title);
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  font-weight: 700;
+  color: var(--color-muted);
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin-top: var(--space-subtitle);
+  margin-bottom: var(--space-title);
+}
+
+/* When "Skills" is its own content-heading (not the top-of-page skills-label
+   pattern), the heading's own bottom margin already provides the gap. */
+.content-heading + .skills-list {
+  margin-top: 0;
+}
+
+/* Confidentiality note directly below the skills tags */
+.disclaimer {
+  font-style: italic;
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+  color: var(--color-muted);
+  margin-bottom: var(--space-title);
+}
+
+/* Each skill as a compact, low-emphasis tag: thin border, light tinted
+   background, small text — sits below captions in the type hierarchy. */
+.skills-list li {
+  padding: var(--space-1);
+  border: 1px solid var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 8%, var(--color-bg));
+  color: var(--color-accent);
+  font-weight: var(--text-tag-weight);
+  font-size: var(--text-tag-size);
+  line-height: var(--text-tag-line);
+}
+
+/* Supporting images inline within project write-ups: each sits directly
+   below the paragraph it illustrates, same width as the body text column.
+   Uses the same block spacing as paragraph-to-paragraph gaps, so the whole
+   page reads on one consistent vertical rhythm. */
+.content-figure {
+  margin: var(--space-block) 0 0;
+}
+
+/* A paragraph that follows an image needs its own top spacing, since it's
+   no longer an adjacent sibling of the previous paragraph. */
+.content-figure + p,
+.image-pair + p {
+  margin-top: var(--space-block);
+}
+
+/* Bulleted list within a project write-up (e.g. Approach steps) */
+.content-list {
+  list-style: disc;
+  padding-left: var(--space-3);
+  margin-top: 0;
+}
+
+.content-list li {
+  color: var(--color-text);
+}
+
+.content-list li + li {
+  margin-top: var(--space-1);
+}
+
+/* A sub-list nested inside a bullet, one level down */
+.content-list .content-list {
+  list-style: circle;
+  margin-top: var(--space-1);
+}
+
+p + .content-list,
+.content-list + p,
+.content-figure + .content-list,
+.image-pair + .content-list {
+  margin-top: var(--space-block);
+}
+
+/* Lets a wide table scroll on its own instead of the whole page */
+.table-scroll {
+  overflow-x: auto;
+  margin-top: var(--space-block);
+}
+
+/* Simple data table (e.g. before/after measurements). Hairline borders
+   only — no card chrome. "Before" values read muted, "after" in accent. */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-scroll .data-table {
+  margin-top: 0;
+}
+
+.data-table th,
+.data-table td {
+  padding: var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+}
+
+.data-table th {
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.data-table__before {
+  color: var(--color-muted);
+}
+
+.data-table__after {
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* A headline achievement called out within a Result section */
+.result-highlight {
+  font-size: var(--text-h2-size);
+  font-weight: 700;
+  color: var(--color-accent);
+  margin-bottom: var(--space-1);
+}
+
+.result-highlight + p {
+  margin-top: 0;
+}
+
+/* A single prominent before/after stat, e.g. a headline time savings */
+.stat-highlight {
+  margin-top: var(--space-block);
+  text-align: center;
+  font-size: var(--text-h2-size);
+  font-weight: 700;
+}
+
+.stat-highlight__before {
+  color: var(--color-muted);
+}
+
+.stat-highlight__arrow {
+  color: var(--color-muted);
+  padding: 0 var(--space-2);
+}
+
+.stat-highlight__after {
+  color: var(--color-accent);
+}
+
+/* Two-column before/after flowchart (e.g. Old Process vs New Process).
+   A hairline divider separates the columns; steps stack with a small
+   arrow between them to show sequence within each column. */
+.flow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-block);
+}
+
+.flow__column--new {
+  border-left: 1px solid var(--color-border);
+  padding-left: var(--space-4);
+}
+
+.flow__column-title {
+  font-size: var(--text-subheader-size);
+  font-weight: var(--text-subheader-weight);
+  line-height: var(--text-subheader-line);
+  margin-bottom: var(--space-2);
+}
+
+.flow__step {
+  border: 1px solid var(--color-border);
+  padding: var(--space-2);
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-line);
+}
+
+.flow__arrow {
+  text-align: center;
+  color: var(--color-muted);
+  padding: var(--space-1) 0;
+}
+
+.content-image {
+  width: 100%;
+  display: block;
+}
+
+/* Displayed at native aspect ratio, never cropped */
+.content-image--contain {
+  height: auto;
+  object-fit: contain;
+}
+
+.content-caption {
+  margin-top: var(--space-1);
+  font-size: var(--text-caption-size);
+  line-height: var(--text-caption-line);
+  color: var(--color-muted);
+}
+
+/* Inline HTML5 video, sized the same as the page's images */
+.content-video {
+  width: 100%;
+  display: block;
+  background-color: #000000;
+}
+
+/* Crops a portrait-orientation (phone-shot) video into a compact box
+   instead of letterboxing it at full height; object-fit: cover trims the
+   top/bottom of the frame like the page-hero image crop does. */
+.content-video--portrait {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  margin: 0 auto;
+}
+
+/* A row of small diagrams illustrating a sequence of states (e.g. valve
+   positions) — 4 across on wide screens, collapsing at narrower widths. */
+.diagram-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-block);
+  margin-top: var(--space-block);
+}
+
+.diagram-grid .content-figure {
+  margin-top: 0;
+  min-width: 0;
+}
+
+/* Two figures shown side by side (e.g. before/after comparisons) */
+.image-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-block);
+  margin-top: var(--space-block);
+}
+
+.image-pair .content-figure {
+  margin-top: 0;
+  min-width: 0;
+}
+
+/* Fixed height (rather than each image's own natural aspect ratio) so two
+   paired images always line up at the same height, regardless of source
+   aspect ratio. object-fit: contain still prevents any cropping. */
+.image-pair .content-image {
+  height: 280px;
+  object-fit: contain;
+}
+
+/* Sub-section heading within a project write-up (e.g. "Future Work",
+   or repeated section labels like Objective/Approach/Result/Skills) */
+.content-heading {
+  font-size: var(--text-h3-size);
+  font-weight: var(--text-h3-weight);
+  line-height: var(--text-h3-line);
+  margin: 0 0 var(--space-subtitle);
+}
+
+/* When used as a repeated section label directly inside the content column,
+   each one needs its own top spacing — except the first, which already
+   gets its gap from .page-title's margin-bottom. */
+.page-content > .content-heading {
+  margin-top: var(--space-title);
+}
+
+.page-content > .content-heading:first-child {
+  margin-top: 0;
+}
+
+/* One-off: an accent-colored variant for a heading that should stand out */
+.content-heading--accent {
+  color: var(--color-accent);
+}
+
+/* One level below .content-heading: labels a sub-part of a section
+   (e.g. "First Iteration" / "Second Iteration" within Iteration Results) */
+.content-subheading {
+  font-size: var(--text-subheader-size);
+  font-weight: var(--text-subheader-weight);
+  line-height: var(--text-subheader-line);
+  margin: var(--space-title) 0 0;
+}
+
+.content-subheading + .content-figure {
+  margin-top: var(--space-subtitle);
+}
+
+/* A trailing section, set off from the paragraphs above with a hairline rule */
+.future-work {
+  width: 100%;
+  margin-top: var(--space-title);
+  padding-top: var(--space-title);
+  border-top: 1px solid var(--color-border);
+}
+
+/* =========================================================
+   Footer
+   ========================================================= */
+.site-footer {
+  text-align: center;
+  padding: var(--space-4) 0;
+  color: var(--color-muted);
+  font-size: var(--text-caption-size);
+  line-height: var(--text-caption-line);
+}
+
+/* =========================================================
+   Responsive
+   ========================================================= */
+
+/* Tablet (iPad portrait and similar): the fixed-width headshot leaves the
+   bio column too narrow at these widths, so shrink it instead of stacking. */
+@media (max-width: 820px) {
+  .about__photo {
+    flex-basis: 260px;
+    width: 260px;
+    height: 320px;
+  }
+
+  .diagram-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .site-nav__list {
+    gap: 8px 16px;
+  }
+
+  .about {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .about__photo {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+    aspect-ratio: 380 / 460;
+  }
+
+  .thumb-grid--projects,
+  .thumb-grid--research {
+    grid-template-columns: 1fr;
+  }
+
+  .image-pair {
+    grid-template-columns: 1fr;
+  }
+
+  .image-pair .content-image {
+    height: 220px;
+  }
+
+  .diagram-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .flow {
+    grid-template-columns: 1fr;
+  }
+
+  .flow__column--new {
+    border-left: none;
+    border-top: 1px solid var(--color-border);
+    padding-left: 0;
+    padding-top: var(--space-4);
+  }
+
+  .stat-highlight {
+    font-size: 1.5rem;
+  }
+
+  .experience-item {
+    flex-direction: column;
+  }
+
+  .banner__name {
+    font-size: 1.9rem;
+  }
+
+  .banner__tagline {
+    font-size: 1rem;
+  }
+
+  .section-heading {
+    font-size: 1.5rem;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+
+  .content-heading {
+    font-size: 1.15rem;
+  }
+
+  .content-subheading {
+    font-size: 1rem;
+  }
+
+  .section {
+    padding: var(--space-section-mobile) 0;
+  }
+}

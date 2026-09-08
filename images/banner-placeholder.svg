@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#CFCBC2"/>
+  <text x="800" y="440" font-family="Arial, sans-serif" font-size="36" fill="#6B675F" text-anchor="middle">Placeholder — banner photo (you working)</text>
+  <text x="800" y="490" font-family="Arial, sans-serif" font-size="22" fill="#8A867C" text-anchor="middle">Replace: images/banner-placeholder.svg</text>
+</svg>

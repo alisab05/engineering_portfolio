@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automated Hydraulic Load Test Rig — Ali Sabbagh</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <nav class="site-nav">
+    <ul class="site-nav__list">
+      <li><a class="site-nav__link" href="../index.html#home">Home</a></li>
+      <li><a class="site-nav__link" href="../index.html#projects">Projects</a></li>
+      <li><a class="site-nav__link" href="../index.html#research">Research</a></li>
+      <li><a class="site-nav__link" href="../index.html#experience">Experience</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="container page-body">
+
+      <a class="back-link" href="../index.html#projects">Back to projects</a>
+
+      <h1 class="page-title">Automated Hydraulic Load Test Rig</h1>
+
+      <div class="skills-label">Skills used</div>
+      <ul class="skills-list">
+        <li>KiCad circuit design</li>
+        <li>Arduino/C++</li>
+        <li>PWM control</li>
+        <li>Hydraulic systems</li>
+        <li>nCode &amp; MATLAB data analysis</li>
+        <li>Iterative test validation</li>
+      </ul>
+
+      <p class="disclaimer">This project was completed during an internship. Specific images and data have been withheld or generalized to protect proprietary company information.</p>
+
+      <div class="page-content">
+
+        <!-- Section 2: System design -->
+        <p>
+          Toyota Material Handling's dyno can drive a forklift's powertrain
+          but can't replicate the hydraulic load from lifting, tilting, and
+          steering, load that's critical to how the truck heats up during a
+          temperature test. I designed and built an automated rig to
+          replicate that hydraulic heat load, replacing the mast's lift
+          cylinders with a proportional pressure relief valve that lets the
+          pump work against a controlled back-pressure instead of a real
+          load.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image" src="../images/hydraulicSystems.svg" alt="Schematic comparing a regular truck's hydraulics to the rig's setup">
+          <figcaption class="content-caption">How the pressure relief valve replaces the lift cylinder to replicate hydraulic load without real lifting.</figcaption>
+        </figure>
+
+        <!-- Section 3: Control system -->
+        <p>
+          I selected and procured the relief valve against pressure, flow,
+          and temperature requirements, then built the control system around
+          it: an Arduino driving the valve via PWM through an H-bridge
+          driver, and pneumatic cylinders actuating the truck's lift and tilt
+          levers through relay-switched solenoid valves.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/circuit.svg" alt="Control circuit block diagram and photo of the built prototype circuit">
+          <figcaption class="content-caption">Prototype control circuit for the relief valve and lever actuation. This breadboard/prototype build is the first step toward a finalized printed circuit board (PCB).</figcaption>
+        </figure>
+
+        <!-- Lever actuation -->
+        <h2 class="content-heading content-heading--accent">Lever Actuation</h2>
+        <p>
+          To actuate the truck's lift and tilt levers without an operator
+          present, I used double-acting pneumatic cylinders controlled
+          through 5/3 exhaust-center pneumatic valves. Each valve has three
+          states: neutral (both ports closed, cylinder holds position),
+          extend (air routed to push the cylinder outward), and retract
+          (air routed to pull it back), letting the Arduino command lever
+          movement in either direction on command.
+        </p>
+
+        <div class="diagram-grid">
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/actuator1.svg" alt="Baseline pneumatic valve diagram in the neutral state">
+            <figcaption class="content-caption">Neutral state: both valve ports closed, cylinder holds position.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/actuatorExtend.svg" alt="Pneumatic valve diagram in the extend state">
+            <figcaption class="content-caption">Extend state: air routed to extend the cylinder.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/actuatorRetract.svg" alt="Pneumatic valve diagram in the retract state">
+            <figcaption class="content-caption">Retract state: air routed to retract the cylinder.</figcaption>
+          </figure>
+          <figure class="content-figure">
+            <img class="content-image content-image--contain" src="../images/actuatorExaust.svg" alt="Pneumatic valve diagram in the exhaust state">
+            <figcaption class="content-caption">Exhaust state: air vented, releasing pressure from the cylinder.</figcaption>
+          </figure>
+        </div>
+
+        <figure class="content-figure">
+          <video class="content-video" controls muted preload="metadata">
+            <source src="../images/actuatorDemo.mp4" type="video/mp4">
+            Your browser does not support playback of this video format.
+          </video>
+          <figcaption class="content-caption">Demo of the pneumatic lever actuation in action.</figcaption>
+        </figure>
+
+        <!-- Section 4: Validation -->
+        <p>
+          I mapped the PWM-to-pressure relationship experimentally to
+          command accurate pressure setpoints in software, and validated the
+          whole rig against real truck data.
+        </p>
+        <figure class="content-figure">
+          <img class="content-image" src="../images/rig_vs_benchmark_pressure.svg" alt="Pressure profile comparison between the rig and the real truck benchmark">
+          <figcaption class="content-caption">Pressure profile of the automated rig closely matches the real truck benchmark over a single cycle.</figcaption>
+        </figure>
+
+        <!-- Section 5: Iteration results -->
+        <p>
+          The first iteration replaced too much of the hydraulic circuit,
+          cutting out components that act as heat sinks, so the rig heated up
+          nearly twice as fast as the real truck. I diagnosed the missing
+          heat dissipation, reintegrated the tilt cylinders and oil control
+          valve, and only isolated the lift function, cutting the
+          temperature discrepancy from ~20&deg;C to ~3&deg;C over a
+          13-minute partial test while maintaining accurate pressure
+          replication.
+        </p>
+        <h3 class="content-subheading">First Iteration</h3>
+        <figure class="content-figure">
+          <img class="content-image" src="../images/tempGraph_iteration1.svg" alt="Temperature graph from the first iteration of the rig">
+          <figcaption class="content-caption">First iteration: ~20&deg;C temperature gap after 13 minutes, caused by missing heat-dissipating components (tilt and lift cylinders removed).</figcaption>
+        </figure>
+
+        <h3 class="content-subheading">Second Iteration</h3>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/secondIteration_diagram.svg" alt="Schematic of the second iteration's hydraulic setup">
+          <figcaption class="content-caption">Second iteration design: the oil control valve and tilt cylinders were reintegrated, with the pressure relief valve now isolating only the lift function.</figcaption>
+        </figure>
+
+        <figure class="content-figure">
+          <img class="content-image" src="../images/tempGraph_iteration2.svg" alt="Temperature graph from the second iteration of the rig">
+          <figcaption class="content-caption">Second iteration: gap reduced to ~3&deg;C after reintegrating the tilt cylinders and oil control valve, isolating only the lift function.</figcaption>
+        </figure>
+
+      </div>
+
+      <div class="future-work">
+        <h2 class="content-heading">Future Work: Third Iteration</h2>
+        <figure class="content-figure">
+          <img class="content-image content-image--contain" src="../images/tmh_hydraulic_finalDiagram.png" alt="Diagram of the third iteration hydraulic system concept">
+          <figcaption class="content-caption">
+            The third iteration design adds a pressure relief valve between
+            the oil control valve and each cylinder inlet, using on/off
+            control valves to direct oil to the correct cylinder. This would
+            allow the rig to control exactly where the hydraulic load is
+            applied, enabling closed-loop feedback control without needing
+            every cylinder physically present.
+          </figcaption>
+        </figure>
+      </div>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Ali Sabbagh</p>
+  </footer>
+
+  <script src="../js/main.js"></script>
+</body>
+</html>

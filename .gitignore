@@ -1,0 +1,6 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Unused source video (replaced by images/actuatorDemo.mp4)
+images/actuatorDemo.MOV
