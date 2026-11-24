@@ -128,7 +128,7 @@ h1, h2, h3, p { margin: 0; }
   padding: 0 var(--content-padding);
 }
 
-.section { padding: var(--space-section) 0; }
+.section { padding-top: var(--space-section); padding-bottom: var(--space-section); }
 
 .section-layout {
   display: flex;
@@ -656,43 +656,6 @@ main { padding-top: var(--nav-height); }
 }
 
 /* =========================================================
-   Closing call-to-action
-   ========================================================= */
-.cta {
-  padding: var(--space-10) 0 var(--space-12);
-  text-align: left;
-}
-.cta__box {
-  background: var(--color-text);
-  color: #fff;
-  border-radius: 28px;
-  padding: clamp(40px, 7vw, 88px);
-  position: relative;
-  overflow: hidden;
-}
-.cta__box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
-  background-size: 48px 48px;
-  -webkit-mask-image: radial-gradient(ellipse 60% 100% at 100% 0%, #000, transparent 70%);
-  mask-image: radial-gradient(ellipse 60% 100% at 100% 0%, #000, transparent 70%);
-}
-.cta__title {
-  position: relative;
-  font-size: var(--text-h2-size);
-  line-height: 1.1;
-  letter-spacing: -0.035em;
-  max-width: 640px;
-}
-.cta__text { position: relative; margin-top: var(--space-2); color: rgba(255, 255, 255, 0.65); max-width: 460px; }
-.cta__box .btn { position: relative; margin-top: var(--space-4); background: #fff; color: var(--color-text); border-color: #fff; }
-.cta__box .btn:hover { background: var(--color-accent); border-color: var(--color-accent); color: #fff; transform: translateY(-2px); }
-
-/* =========================================================
    Simple sub-page layout (project / research detail pages)
    ========================================================= */
 .page-header__subtitle {
@@ -1164,7 +1127,7 @@ p + .content-list,
 }
 
 @media (max-width: 640px) {
-  .section { padding: var(--space-section-mobile) 0; }
+  .section { padding-top: var(--space-section-mobile); padding-bottom: var(--space-section-mobile); }
   .hero { padding-top: var(--space-8); }
   .site-nav { gap: var(--space-1); }
   .site-nav__brand { display: none; }
