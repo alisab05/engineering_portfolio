@@ -157,7 +157,7 @@ h1, h2, h3, p { margin: 0; }
 
 .section-lede {
   color: var(--color-muted);
-  max-width: 560px;
+  max-width: none;
   margin-top: var(--space-1);
 }
 
