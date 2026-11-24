@@ -20,8 +20,8 @@
     <a class="site-nav__brand" href="#home">ali.sabbagh</a>
     <ul class="site-nav__list">
       <li><a class="site-nav__link" href="#experience">Experience</a></li>
-      <li><a class="site-nav__link" href="#projects">Projects</a></li>
       <li><a class="site-nav__link" href="#research">Research</a></li>
+      <li><a class="site-nav__link" href="#projects">Projects</a></li>
     </ul>
   </nav>
 
@@ -41,8 +41,8 @@
               from hydraulic test rigs to compliant robot legs.
             </p>
             <div class="hero__actions">
-              <a class="btn btn--primary" href="#projects">View projects &darr;</a>
-              <a class="btn btn--ghost" href="#experience">Experience</a>
+              <a class="btn btn--primary" href="#research">View research &darr;</a>
+              <a class="btn btn--ghost" href="#projects">Projects</a>
             </div>
           </div>
           <div class="hero__photo reveal" style="--delay: 150ms">
@@ -130,12 +130,79 @@
       </div>
     </section>
 
+    <!-- ============================= RESEARCH ============================= -->
+    <!-- One group per lab; ids match the timeline links. -->
+    <section id="research" class="section container">
+      <div class="section-layout">
+        <div class="section-head reveal">
+          <span class="eyebrow">02 / Labs</span>
+          <h2 class="section-heading">Research</h2>
+          <p class="section-lede">Two Georgia Tech labs: legged robot locomotion (CRAB, with a team study presented at APS 2026) and MRI-compatible microcatheters (MIST, PURA-funded).</p>
+        </div>
+        <div class="project-groups">
+
+        <div class="project-group" id="crab">
+          <div class="project-group__head reveal">
+            <h3 class="project-group__title"><a href="research/crab-lab.html">CRAB Lab</a><small>Compliant leg mechanisms &amp; legged robot locomotion</small></h3>
+            <span class="project-group__dates">Jan 2026 &ndash; present</span>
+          </div>
+          <div class="thumb-grid thumb-grid--projects thumb-grid--three">
+
+            <a class="thumb reveal" href="research/crab-compliant-leg.html">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--fill" src="images/crab-compliant-leg-3d.png" alt="Compliant Leg Redesign thumbnail">
+              </div>
+              <div class="thumb__meta"><span class="thumb__index">01</span><span class="thumb__title">Compliant Leg Redesign</span></div>
+              <div class="thumb__subtitle">Variable-stiffness legs for the SCUTTLE robot</div>
+            </a>
+
+            <a class="thumb reveal" href="research/crab-steering-tests.html" style="--delay: 100ms">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--inset" src="images/crab-scutl-steering-endpoints.png" alt="SCUTL Steering Tests thumbnail">
+              </div>
+              <div class="thumb__meta"><span class="thumb__index">02</span><span class="thumb__title">SCUTL Steering Tests</span></div>
+              <div class="thumb__subtitle">Steering a centipede robot by posture alone</div>
+            </a>
+
+            <a class="thumb reveal" href="research/crab-lab.html#locomotion" style="--delay: 200ms">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--fill" src="images/crab-scuttle-rough-terrain.png" alt="Multi-Legged Locomotion Study thumbnail">
+              </div>
+              <div class="thumb__meta"><span class="thumb__index">03</span><span class="thumb__title">Multi-Legged Locomotion Study</span></div>
+              <div class="thumb__subtitle">Team robophysics study, presented at APS 2026</div>
+            </a>
+
+          </div>
+        </div>
+
+        <div class="project-group" id="mist">
+          <div class="project-group__head reveal">
+            <h3 class="project-group__title"><a href="research/mist-lab.html">MIST Lab</a><small>Micromachined Sensors &amp; Transducers Lab</small></h3>
+            <span class="project-group__dates">Sep 2024 &ndash; Aug 2025</span>
+          </div>
+          <div class="thumb-grid thumb-grid--projects thumb-grid--featured">
+
+            <a class="thumb reveal" href="research/mist-lab.html">
+              <div class="thumb__image-wrap">
+                <img class="thumb__image thumb__image--fill" src="images/IMG_3416.JPG" alt="MIST Lab MRI-compatible microcatheter thumbnail">
+              </div>
+              <div class="thumb__meta"><span class="thumb__index">01</span><span class="thumb__title">MRI-Compatible Microcatheters</span></div>
+              <div class="thumb__subtitle">PURA-funded independent study</div>
+            </a>
+
+          </div>
+        </div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ============================= PROJECTS ============================= -->
     <!-- One group per experience; ids match the timeline links above. -->
     <section id="projects" class="section container">
       <div class="section-layout">
         <div class="section-head reveal">
-          <span class="eyebrow">02 / Selected work</span>
+          <span class="eyebrow">03 / Selected work</span>
           <h2 class="section-heading">Projects</h2>
           <p class="section-lede">Hardware, analysis, and automation, grouped by where the work happened.</p>
         </div>
@@ -215,73 +282,6 @@
                       <div class="thumb__meta"><span class="thumb__index">06</span><span class="thumb__title">The Emotional Wrecks Robot</span></div>
                       <div class="thumb__subtitle">ME 2110, Georgia Tech</div>
                     </a>
-
-          </div>
-        </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ============================= RESEARCH ============================= -->
-    <!-- One group per lab; ids match the timeline links. -->
-    <section id="research" class="section container">
-      <div class="section-layout">
-        <div class="section-head reveal">
-          <span class="eyebrow">03 / Labs</span>
-          <h2 class="section-heading">Research</h2>
-          <p class="section-lede">Two labs at Georgia Tech: legged robot locomotion and MRI-compatible microcatheters.</p>
-        </div>
-        <div class="project-groups">
-
-        <div class="project-group" id="crab">
-          <div class="project-group__head reveal">
-            <h3 class="project-group__title"><a href="research/crab-lab.html">CRAB Lab</a><small>Compliant leg mechanisms &amp; legged robot locomotion</small></h3>
-            <span class="project-group__dates">Jan 2026 &ndash; present</span>
-          </div>
-          <div class="thumb-grid thumb-grid--projects thumb-grid--three">
-
-            <a class="thumb reveal" href="research/crab-compliant-leg.html">
-              <div class="thumb__image-wrap">
-                <img class="thumb__image thumb__image--fill" src="images/crab-compliant-leg-3d.png" alt="Compliant Leg Redesign thumbnail">
-              </div>
-              <div class="thumb__meta"><span class="thumb__index">01</span><span class="thumb__title">Compliant Leg Redesign</span></div>
-              <div class="thumb__subtitle">Variable-stiffness legs for the SCUTTLE robot</div>
-            </a>
-
-            <a class="thumb reveal" href="research/crab-steering-tests.html" style="--delay: 100ms">
-              <div class="thumb__image-wrap">
-                <img class="thumb__image thumb__image--inset" src="images/crab-scutl-steering-endpoints.png" alt="SCUTL Steering Tests thumbnail">
-              </div>
-              <div class="thumb__meta"><span class="thumb__index">02</span><span class="thumb__title">SCUTL Steering Tests</span></div>
-              <div class="thumb__subtitle">Steering a centipede robot by posture alone</div>
-            </a>
-
-            <a class="thumb reveal" href="research/crab-lab.html#locomotion" style="--delay: 200ms">
-              <div class="thumb__image-wrap">
-                <img class="thumb__image thumb__image--fill" src="images/crab-scuttle-rough-terrain.png" alt="Multi-Legged Locomotion Study thumbnail">
-              </div>
-              <div class="thumb__meta"><span class="thumb__index">03</span><span class="thumb__title">Multi-Legged Locomotion Study</span></div>
-              <div class="thumb__subtitle">Team robophysics study, presented at APS 2026</div>
-            </a>
-
-          </div>
-        </div>
-
-        <div class="project-group" id="mist">
-          <div class="project-group__head reveal">
-            <h3 class="project-group__title"><a href="research/mist-lab.html">MIST Lab</a><small>Micromachined Sensors &amp; Transducers Lab</small></h3>
-            <span class="project-group__dates">Sep 2024 &ndash; Aug 2025</span>
-          </div>
-          <div class="thumb-grid thumb-grid--projects thumb-grid--featured">
-
-            <a class="thumb reveal" href="research/mist-lab.html">
-              <div class="thumb__image-wrap">
-                <img class="thumb__image thumb__image--fill" src="images/IMG_3416.JPG" alt="MIST Lab MRI-compatible microcatheter thumbnail">
-              </div>
-              <div class="thumb__meta"><span class="thumb__index">01</span><span class="thumb__title">MRI-Compatible Microcatheters</span></div>
-              <div class="thumb__subtitle">PURA-funded independent study</div>
-            </a>
 
           </div>
         </div>
