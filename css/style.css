@@ -1259,3 +1259,14 @@ p + .content-list,
 /* A portrait photo shown at a comfortable width, centered */
 .content-image--narrow { max-width: 420px; margin: 0 auto; height: auto; }
 .content-figure:has(.content-image--narrow) .content-caption { max-width: 420px; margin-left: auto; margin-right: auto; }
+
+/* Logos that keep their brand color all the time */
+.tl-card__logo--color { filter: none; opacity: 1; }
+
+/* Links out to the lab websites */
+.project-group__side { display: flex; align-items: baseline; gap: var(--space-3); flex-wrap: wrap; }
+.project-group__site { font-family: var(--font-mono); font-size: 0.78rem; color: var(--color-accent); }
+.project-group__site:hover { text-decoration: underline; }
+.page-header__site { margin-top: var(--space-1); font-family: var(--font-mono); font-size: 0.8rem; }
+.page-header__site a { color: var(--color-accent); border-bottom: 1px solid transparent; transition: border-color 0.25s ease; }
+.page-header__site a:hover { border-bottom-color: var(--color-accent); }
